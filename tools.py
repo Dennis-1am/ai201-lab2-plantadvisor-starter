@@ -52,10 +52,24 @@ def lookup_plant(plant_name: str) -> dict:
 
     Before writing code, complete the lookup_plant section of specs/tool-functions-spec.md.
     """
+
+    query = plant_name.strip().lower()
+
+    for key, plant in _plant_db.items():
+        # Rule 1: direct key match
+        if query == key:
+            return {"found": True, "plant": plant}
+        # Rule 2: display name match
+        if query == plant.get("display_name", "").lower():
+            return {"found": True, "plant": plant}
+        # Rule 3: alias match
+        if query in [alias.lower() for alias in plant.get("aliases", [])]:
+            return {"found": True, "plant": plant}
+
     return {
         "found": False,
         "name": plant_name,
-        "message": "Plant lookup not yet implemented. Complete Milestone 1.",
+        "message": f"There is no information in the database for this '{plant_name}'. Instead use the get seasonal condition function to give general advice about taking care of plant in the current season.",
     }
 
 

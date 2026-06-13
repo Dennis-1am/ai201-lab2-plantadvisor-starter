@@ -73,7 +73,7 @@ the broadest net, so they go last.
 *Aliases are stored as a list of strings. How will you check if the normalized input matches any alias in the list? Write your approach in pseudocode or plain English.*
 
 ```
-[your answer here]
+We can compare the normalized input and check if it matches either the plant name / alias / scientific name.
 ```
 
 ---
@@ -83,7 +83,7 @@ the broadest net, so they go last.
 *When a plant isn't found, the agent will read your message and use it to decide what to tell the user. Write the exact string you'll return — make it useful to the agent, not just to a human reading logs.*
 
 ```
-[your answer here]
+This {plant_name} doesn't exist in the records. Try using a common name, display name, or a alias.
 ```
 
 ---

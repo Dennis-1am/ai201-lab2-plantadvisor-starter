@@ -129,7 +129,8 @@ for tool_call in assistant_message.tool_calls:
 *The loop should stop when: (a) the LLM returns a response with no tool calls, OR (b) the MAX_TOOL_ROUNDS limit is reached. Describe how you will detect each condition and what you will return in each case.*
 
 ```
-[your answer here]
+(a) We can check if the assistant message has the tool_calls = true.
+(b) We will keep a counter outside of the tool call loop and if the counter > MAX_TOOL_ROUNDS then we will stop not allow for extra tool calls and return with what we have.
 ```
 
 ---
@@ -139,7 +140,7 @@ for tool_call in assistant_message.tool_calls:
 *Once the loop exits because there are no more tool calls, how do you extract the text content from the response object? What field holds the string you should return?*
 
 ```
-[your answer here]
+response.choices[0].message.content
 ```
 
 ---
@@ -154,17 +155,16 @@ for tool_call in assistant_message.tool_calls:
 Query: "How should I care for my calathea?"
 Round 1 tool call: [tool name, args]
 Round 2 tool call: [tool name, args] (if any)
-Final response: [brief description]
-```
+Final response: First the LLM calls the lookup_plant then then it calls the get_season_conditions before returning with the result.
 
 **What happens when you ask about a plant that isn't in the database?**
 
 ```
-[describe the behavior you observed]
+The LLM says it cannot find it but give general guidance on taking care of plants in the current season.
 ```
 
 **One thing about the tool call API that surprised you:**
 
 ```
-[your answer here]
+How straight forward the approach is and how powerful prompt engineering is we can get new features just by asking LLM to behave a certain way instead of hardcoding it.
 ```

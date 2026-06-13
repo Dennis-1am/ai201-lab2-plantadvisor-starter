@@ -75,6 +75,7 @@ with gr.Blocks(
                     height=520,
                     placeholder="<em>Ask me about your plants...</em>",
                     show_label=False,
+                    type="messages",
                 ),
                 textbox=gr.Textbox(
                     placeholder="e.g. How often should I water my monstera?",
